@@ -4,11 +4,6 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import java.net.URI;
-
-import static android.text.style.TtsSpan.GENDER_FEMALE;
-import static android.text.style.TtsSpan.GENDER_MALE;
-
 /**
  * Created by PiotrM on 16.07.2017.
  */
@@ -54,6 +49,9 @@ public final class ItemContract {
 
         /** Item price (price INTEGER) */
         public final static String COLUMN_ITEM_PRICE = "price";
+
+        /** Item photo (photo BLOB) */
+        public final static String COLUMN_ITEM_PHOTO = "photo";
 
         /** Item quantity (quantity INTEGER) */
         public final static String COLUMN_ITEM_QUANTITY = "quantity";

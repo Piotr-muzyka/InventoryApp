@@ -5,4 +5,6 @@ package com.example.android.inventoryapp.data;
  */
 
 public class ItemProvider {
+
+    public static final String LOG_TAG = ItemProvider.class.getSimpleName();
 }
