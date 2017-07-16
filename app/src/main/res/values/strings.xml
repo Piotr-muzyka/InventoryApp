@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">InventoryApp</string>
+    <string name="delete_all_entries">Delete all entries.</string>
+    <string name="insert_dummy_data">Insert dummy data</string>
+    <string name="save_item">Save</string>
+    <string name="delete_item">Delete item</string>
+    <string name="empty_subtitle_text">Please insert items to the list.</string>
+    <string name="shop_inventory">Shop Inventory</string>
+    <string name="category_overview">Overview</string>
+    <string name="hint_item_name">item name here</string>
+    <string name="item_details_category">Item details</string>
+    <string name="hint_item_price">Item price here</string>
+    <string name="price_unit">$</string>
+    <string name="hint_item_quantity">>Item quantity here.</string>
+    <string name="delete_fail">Delete item failed.</string>
+    <string name="delete_success">Delete item succesful.</string>
+    <string name="add_item">Add an item</string>
+    <string name="edit_item">Edit item</string>
+    <string name="insert_item_fail">Insert item failed.</string>
+    <string name="insert_item_success">Item inserted successfully</string>
+    <string name="edit_item_fail">Item details update failed.</string>
+    <string name="edit_item_success">Item details updated successfully.</string>
+    <string name="changes_discard">Discard changes</string>
+    <string name="changes_not_saved">Changes weren\'t saved.</string>
+    <string name="changes_edit">Keep editing</string>
+    <string name="delete_button">Delete</string>
+    <string name="delete_msg">Are you sure you want to delete item ?</string>
+    <string name="delete_cancel">Cancel</string>
 </resources>
