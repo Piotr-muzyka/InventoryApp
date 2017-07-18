@@ -4,14 +4,14 @@
     <string name="insert_dummy_data">Insert dummy data</string>
     <string name="save_item">Save</string>
     <string name="delete_item">Delete item</string>
-    <string name="empty_subtitle_text">Please insert items to the list.</string>
+    <string name="empty_subtitle_text">Please insert items to the list using the + button \n on the bottom of the screen.</string>
     <string name="shop_inventory">Shop Inventory</string>
     <string name="category_overview">Overview</string>
-    <string name="hint_item_name">item name here</string>
+    <string name="hint_item_name">Item name here.</string>
     <string name="item_details_category">Item details</string>
-    <string name="hint_item_price">Item price here</string>
+    <string name="hint_item_price">Item price here.</string>
     <string name="price_unit">$</string>
-    <string name="hint_item_quantity">>Item quantity here.</string>
+    <string name="hint_item_quantity">Item quantity here.</string>
     <string name="delete_fail">Delete item failed.</string>
     <string name="delete_success">Delete item succesful.</string>
     <string name="add_item">Add an item</string>
@@ -26,4 +26,11 @@
     <string name="delete_button">Delete</string>
     <string name="delete_msg">Are you sure you want to delete item ?</string>
     <string name="delete_cancel">Cancel</string>
+    <string name="item_provider_hint">Item provider here.</string>
+    <string name="item_sell">sell</string>
+    <string name="button_order">ORDER</string>
+    <string name="button_decrement">-</string>
+    <string name="button_increment">+</string>
+    <string name="sell_item">SELL</string>
+    <string name="item_sold">No more items to sell :( </string>
 </resources>

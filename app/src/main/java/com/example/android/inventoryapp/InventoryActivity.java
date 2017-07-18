@@ -16,7 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.android.inventoryapp.data.ItemContract;
 
@@ -57,6 +59,7 @@ public class InventoryActivity extends AppCompatActivity implements
         cursorAdapter = new ItemCursorAdapter(this, null);
 
         itemListView.setAdapter(cursorAdapter);
+
         /** Clicking on an item in a list allows to edit its data. */
         itemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -80,7 +83,8 @@ public class InventoryActivity extends AppCompatActivity implements
         values.put(ItemContract.ItemEntry.COLUMN_ITEM_NAME, "Sodie pops");
         values.put(ItemContract.ItemEntry.COLUMN_ITEM_PRICE, "42");
         values.put(ItemContract.ItemEntry.COLUMN_ITEM_QUANTITY, 1);
-        //values.put(ItemContract.ItemEntry.COLUMN_ITEM_PHOTO, 1);
+        values.put(ItemContract.ItemEntry.COLUMN_ITEM_PHOTO, R.drawable.ic_image_area_close_white_48dp);
+        values.put(ItemContract.ItemEntry.COLUMN_ITEM_PROVIDER, "PAPA JOHN");
 
         Uri newUri = getContentResolver().insert(ItemContract.ItemEntry.CONTENT_URI, values);
     }
@@ -115,8 +119,10 @@ public class InventoryActivity extends AppCompatActivity implements
         String[] projection = {
                 ItemContract.ItemEntry._ID,
                 ItemContract.ItemEntry.COLUMN_ITEM_NAME,
+                ItemContract.ItemEntry.COLUMN_ITEM_PRICE,
                 ItemContract.ItemEntry.COLUMN_ITEM_QUANTITY,
-                ItemContract.ItemEntry.COLUMN_ITEM_PRICE};
+                ItemContract.ItemEntry.COLUMN_ITEM_PHOTO,
+                ItemContract.ItemEntry.COLUMN_ITEM_PROVIDER};
 
         /** ContentProvider's query method will be executed on a background thread */
         return new CursorLoader(this,   // Parent activity context
@@ -137,6 +143,24 @@ public class InventoryActivity extends AppCompatActivity implements
     public void onLoaderReset(Loader<Cursor> loader) {
         /** Inserts null - used when there is need to delete data*/
         cursorAdapter.swapCursor(null);
+    }
+
+    public void sell(Cursor cursor, int position) {
+        cursor.moveToPosition(position);
+        ContentValues values = new ContentValues();
+        int itemId = cursor.getColumnIndex(ItemContract.ItemEntry._ID);
+        int itemQuantity = cursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_QUANTITY);
+        int value = cursor.getInt(itemQuantity);
+
+        if (-- value <= -1) {
+            Toast.makeText(this, "Not enough stock", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        values.put(ItemContract.ItemEntry.COLUMN_ITEM_QUANTITY, itemQuantity);
+        Uri itemUri = ContentUris.withAppendedId(ItemContract.ItemEntry.CONTENT_URI, cursor.getInt(itemId));
+        int rowsAffected = getContentResolver().update(itemUri, values, null, null);
+        Toast.makeText(this, rowsAffected + "Sold", Toast.LENGTH_SHORT).show();
     }
 }
 

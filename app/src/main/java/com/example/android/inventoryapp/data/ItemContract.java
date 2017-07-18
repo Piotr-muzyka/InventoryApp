@@ -19,7 +19,7 @@ public final class ItemContract {
     /** possible path to access DB item information with Content Provider. */
     public static final String PATH_ITEMS = "items";
 
-    /** Empty constructor - prevents accidential instatiation of the contract class. */
+    /** Empty constructor - prevents accidental instantiation of the contract class. */
     private ItemContract() {
     }
 
@@ -49,11 +49,14 @@ public final class ItemContract {
         /** Item price (price INTEGER). */
         public final static String COLUMN_ITEM_PRICE = "price";
 
+        /** Item quantity (quantity INTEGER). */
+        public final static String COLUMN_ITEM_QUANTITY = "quantity";
+
         /** Item photo (photo BLOB). */
         public final static String COLUMN_ITEM_PHOTO = "photo";
 
-        /** Item quantity (quantity INTEGER). */
-        public final static String COLUMN_ITEM_QUANTITY = "quantity";
+        /** Item provider (provider TEXT). */
+        public final static String COLUMN_ITEM_PROVIDER = "provider";
 
     }
 }

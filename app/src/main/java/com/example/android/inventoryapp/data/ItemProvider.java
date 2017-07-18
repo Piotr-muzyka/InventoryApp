@@ -102,9 +102,15 @@ public class ItemProvider extends ContentProvider {
         }
 
         /** If the quantity is provided, check that it's greater than or equal to 0. */
-        Integer quantity = values.getAsInteger(ItemContract.ItemEntry.COLUMN_ITEM_PRICE);
+        Integer quantity = values.getAsInteger(ItemContract.ItemEntry.COLUMN_ITEM_QUANTITY);
         if (quantity != null && quantity < 0) {
             throw new IllegalArgumentException("Item requires valid quantity");
+        }
+
+        /** Check that the provider is not null */
+        String provider = values.getAsString(ItemContract.ItemEntry.COLUMN_ITEM_PROVIDER);
+        if (provider == null) {
+            throw new IllegalArgumentException("Item requires a provider");
         }
 
         /** Get writable database */
@@ -167,7 +173,15 @@ public class ItemProvider extends ContentProvider {
 
             Integer quantity = values.getAsInteger(ItemContract.ItemEntry.COLUMN_ITEM_QUANTITY);
             if (quantity != null && quantity < 0) {
-                throw new IllegalArgumentException("Item requires valid price");
+                throw new IllegalArgumentException("Item requires valid quantity");
+            }
+        }
+
+        /** Same rules as for insertion apply here. */
+        if (values.containsKey(ItemContract.ItemEntry.COLUMN_ITEM_PROVIDER)) {
+            String provider = values.getAsString(ItemContract.ItemEntry.COLUMN_ITEM_PROVIDER);
+            if (provider == null) {
+                throw new IllegalArgumentException("Item requires a provider");
             }
         }
 
@@ -197,7 +211,7 @@ public class ItemProvider extends ContentProvider {
         final int match = sUriMatcher.match(uri);
         switch (match) {
             case ITEMS:
-                /** Delete rows matchin selection. */
+                /** Delete rows matching selection. */
                 rowsDeleted = database.delete(ItemContract.ItemEntry.TABLE_NAME, selection, selectionArgs);
                 break;
             case ITEM_ID:

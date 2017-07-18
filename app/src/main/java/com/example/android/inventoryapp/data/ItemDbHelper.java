@@ -32,8 +32,9 @@ public class ItemDbHelper extends SQLiteOpenHelper {
                 + ItemContract.ItemEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + ItemContract.ItemEntry.COLUMN_ITEM_NAME + " TEXT NOT NULL, "
                 + ItemContract.ItemEntry.COLUMN_ITEM_PRICE + " INTEGER NOT NULL DEFAULT 0, "
-                + ItemContract.ItemEntry.COLUMN_ITEM_PHOTO + " BLOB, "
-                + ItemContract.ItemEntry.COLUMN_ITEM_QUANTITY + " INTEGER NOT NULL DEFAULT 0);";
+                + ItemContract.ItemEntry.COLUMN_ITEM_QUANTITY + " INTEGER NOT NULL DEFAULT 0, "
+                + ItemContract.ItemEntry.COLUMN_ITEM_PHOTO + " TEXT NOT NULL, "
+                + ItemContract.ItemEntry.COLUMN_ITEM_PROVIDER + " TEXT NOT NULL);";
 
         /** Create DB with the statement SQL_CREATE_ITEMS_TABLE. */
         db.execSQL(SQL_CREATE_ITEMS_TABLE);
