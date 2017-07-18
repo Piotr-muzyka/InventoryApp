@@ -16,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -152,7 +151,7 @@ public class InventoryActivity extends AppCompatActivity implements
         int itemQuantity = cursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_QUANTITY);
         int value = cursor.getInt(itemQuantity);
 
-        if (-- value <= -1) {
+        if (--value <= -1) {
             Toast.makeText(this, "Not enough stock", Toast.LENGTH_SHORT).show();
             return;
         }

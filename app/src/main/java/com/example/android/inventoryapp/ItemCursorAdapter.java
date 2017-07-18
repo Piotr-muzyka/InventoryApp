@@ -11,7 +11,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +60,7 @@ public class ItemCursorAdapter extends CursorAdapter {
         int photoColumnIndex = cursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_PHOTO);
         int providerColumnIndex = cursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_PROVIDER);
 
-        final Uri currentUri = ContentUris.withAppendedId(ItemContract.ItemEntry.CONTENT_URI, cursor.getInt(cursor.getColumnIndex(ItemContract.ItemEntry._ID)) );
+        final Uri currentUri = ContentUris.withAppendedId(ItemContract.ItemEntry.CONTENT_URI, cursor.getInt(cursor.getColumnIndex(ItemContract.ItemEntry._ID)));
 
         String itemName = cursor.getString(nameColumnIndex);
         String itemPrice = cursor.getString(priceColumnIndex);

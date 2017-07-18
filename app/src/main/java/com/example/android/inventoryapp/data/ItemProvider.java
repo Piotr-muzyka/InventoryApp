@@ -9,8 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
-import java.net.URI;
-
 /**
  * Created by PiotrM on 16.07.2017.
  */
@@ -19,13 +17,19 @@ public class ItemProvider extends ContentProvider {
 
     public static final String LOG_TAG = ItemProvider.class.getSimpleName();
 
-    /** items table URI matcher code. */
+    /**
+     * items table URI matcher code.
+     */
     private static final int ITEMS = 100;
 
-    /** single item URI matcher code. */
+    /**
+     * single item URI matcher code.
+     */
     private static final int ITEM_ID = 101;
 
-    /** Object to match a content URI to a URI matcher code. */
+    /**
+     * Object to match a content URI to a URI matcher code.
+     */
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     /** The following code will be executed upon this class content is called for the first time. */
@@ -86,7 +90,9 @@ public class ItemProvider extends ContentProvider {
         }
     }
 
-    /** Insert a new item into the database with the given content values. Return the new content URI for that specific row in the database. */
+    /**
+     * Insert a new item into the database with the given content values. Return the new content URI for that specific row in the database.
+     */
     private Uri insertItem(Uri uri, ContentValues values) {
 
         /** Check that the name is not null */
@@ -228,7 +234,7 @@ public class ItemProvider extends ContentProvider {
             getContext().getContentResolver().notifyChange(uri, null);
         }
 
-       /** number of deleted rows is returned. */
+        /** number of deleted rows is returned. */
         return rowsDeleted;
     }
 
