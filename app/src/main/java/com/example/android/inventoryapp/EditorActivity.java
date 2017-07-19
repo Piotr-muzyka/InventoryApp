@@ -14,6 +14,7 @@ import android.os.Environment;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -75,7 +76,9 @@ public class EditorActivity extends AppCompatActivity implements
      * Order more items from Provider button
      */
     private Button orderButton;
+
     private boolean itemHasChanged = false;
+    private boolean hasClicked = true;
     /**
      * OnTouchListener that listens for any user touches on a View, implying that they are modifying
      * the view, and we change the itemHasChanged boolean to true.
@@ -173,9 +176,13 @@ public class EditorActivity extends AppCompatActivity implements
         });
 
         productPhotoView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View photoView) {
+
                 productPhotoAddition();
+                hasClicked = false;
+                Log.v(LOG_TAG, "hasClicked Value in onClick :" + hasClicked);
             }
         });
 
@@ -192,9 +199,11 @@ public class EditorActivity extends AppCompatActivity implements
         String quantityString = quantityEditText.getText().toString().trim();
         String providerString = providerEditText.getText().toString().trim();
 
+        Log.v(LOG_TAG, "hasClicked Value in saveItem :" + hasClicked);
+
         // Check if this is supposed to be a new item and check if all the fields in the editor are blank
         if (currentItemUri == null && TextUtils.isEmpty(nameString) || TextUtils.isEmpty(nameString) || TextUtils.isEmpty(priceString) ||
-                TextUtils.isEmpty(quantityString) || TextUtils.isEmpty(providerString)) {
+                TextUtils.isEmpty(quantityString) || TextUtils.isEmpty(providerString) || hasClicked ) {
 
             Toast.makeText(this, "Item wasn't added. Please fill up all required fields.", Toast.LENGTH_SHORT).show();
 
@@ -358,7 +367,7 @@ public class EditorActivity extends AppCompatActivity implements
 
     private void productPhotoAddition() {
 
-        Intent choosePhoto = new Intent(Intent.ACTION_PICK);
+        Intent choosePhoto = new Intent(Intent.ACTION_OPEN_DOCUMENT);
 
         // point to photo directory
         File photoDirectory = Environment.getExternalStoragePublicDirectory
